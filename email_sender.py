@@ -7,14 +7,14 @@ import json
 seen_file = "seen_jobs.json"
 
 def send_emails(new_jobs):
-    seen_urls = set()
+    seen_ids = set()
     if os.path.exists(seen_file):
         try:
             with open(seen_file, "r") as file:
-                seen_urls = set(json.load(file))
+                seen_ids = set(json.load(file))
         except Exception:
-            seen_urls = set()
-    all_jobs = [job for job in new_jobs if job.get("url") and job["url"] not in seen_urls]
+            seen_ids = set()
+    all_jobs = [job for job in new_jobs if job.get("jobId") and job["jobId"] not in seen_ids]
     if len(all_jobs) == 0:
         return False
         
@@ -45,6 +45,6 @@ def send_emails(new_jobs):
             seen_urls.add(job["url"])
         
         with open(seen_file, "w") as file:
-            json.dump(list(seen_urls),file, indent = 2) # converts our python data into json for program to read
+            json.dump(list(seen_ids),file, indent = 2) # converts our python data into json for program to read
     except Exception as e:
         print(f"Error sending email: {e}")

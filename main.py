@@ -22,6 +22,7 @@ def sync_jobs(jobs_dict, connection):
         for job_id in new_j:
             new_job = jobs_dict[job_id]
             new_jobs.append(new_job)
+        print(new_jobs)
         send_emails(new_jobs)
         insert_jobs(jobs_dict, connection)
 
@@ -84,4 +85,4 @@ def removed_jobs():
     return render_template("Removed.html", removed = jobs)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)

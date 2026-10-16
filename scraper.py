@@ -65,19 +65,21 @@ class Friendly_Bot():
             job_locations = dictionary.get("jobLocationNames")
             if "London" in job_locations:
                 lnd_place = job_locations.find("London")
-                londonless = job_locations[:lnd_place] + job_locations[(lnd_place+len("London")):]
+                londonless = job_locations[:lnd_place] + job_locations[(lnd_place+ 6):]
                 job_locations = "London, "+ londonless
             job_id = dictionary["jobId"]
             target_name = "Register Your Interest - "
             target_len = len(target_name)
             company_name = dictionary["jobTitle"]
             if target_name in company_name:
-                jobs_dict[job_id] = {"jobTitle": company_name[target_len:],
+                jobs_dict[job_id] = {"jobId": dictionary["jobId"],
+                                    "jobTitle": company_name[target_len:],
                                      "url": dictionary["url"],
                                      "companyName": dictionary["companyName"],
                                      "location": job_locations}
             else:
-                jobs_dict[job_id] = {"jobTitle": dictionary["jobTitle"],
+                jobs_dict[job_id] = {"jobId": dictionary["jobId"],
+                                   "jobTitle": dictionary["jobTitle"],
                                    "url": dictionary["url"],
                                    "companyName": dictionary["companyName"],
                                    "location": job_locations}
