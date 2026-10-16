@@ -42,7 +42,7 @@ def send_emails(new_jobs):
         print("Email notification sent successfully!")
         
         for job in all_jobs:
-            seen_urls.add(job["jobId"])
+            seen_ids.add(job["jobId"])
         
         with open(seen_file, "w") as file:
             json.dump(list(seen_ids),file, indent = 2) # converts our python data into json for program to read
