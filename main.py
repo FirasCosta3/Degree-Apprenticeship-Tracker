@@ -72,11 +72,9 @@ def change_job():
     data = request.get_json()
     id = data.get("id")
     choice = data.get("choice")
-    print(id, choice)
     cursor.execute("UPDATE jobs SET hidden = ? WHERE jobId = ?", (choice, id))
     cursor.execute("SELECT * FROM jobs WHERE jobId = ?", (id,))
     job = cursor.fetchone()
-    print(job)
     return "", 200
 
 @app.route("/removed_jobs")
@@ -85,4 +83,4 @@ def removed_jobs():
     return render_template("Removed.html", removed = jobs)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
