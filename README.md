@@ -1,6 +1,6 @@
 <img width="1719" height="990" alt="Screenshot 2026-10-31 080704" src="https://github.com/user-attachments/assets/b8441b0a-1b0a-4ee3-9c7c-8f791c4ce789" /><img width="1719" height="992" alt="Screenshot 2026-10-31 080801" src="https://github.com/user-attachments/assets/2a6bad93-b54c-437e-bf64-074a7243e66d" />
 
-﻿# Degree Apprenticeship Tracker
+﻿<h1> Degree Apprenticeship Tracker </h1>
 
 Automated Python web scraper and Flask dashboard built to help you track Technology Degree Apprenticeships live
 Building this project has allowed me to apply early to the degree apprenticeships that the scraper has found, running it on `GitHub Actions` every 4 hours.
