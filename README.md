@@ -14,6 +14,7 @@ Building this project has allowed me to apply early to the degree apprenticeship
 * **Application Tracking:** Each job listing has a dedicated checkmark button you can press when you have applied to the job, sending it to the bottom of the page and adding +1 to the applied to tally at the top.
 * **Data Handling:** SQLite to store active jobs and track users removed jobs, used a JSON file that the Github agent appends after each new job so no duplicate emails are sent.
 <img width="1719" height="992" alt="Screenshot 2026-10-31 080801" src="https://github.com/user-attachments/assets/2a6bad93-b54c-437e-bf64-074a7243e66d" />
+
 ## Tech Stack
 * **Backend:** Python, Flask
 * **Database:** SQLite
