@@ -291,15 +291,6 @@ body{
     background: #e8e7e6;
 }
 
-#job-search{
-    text-align: center;
-    border: none;
-    border-radius: 9px;
-    padding: 10px;
-    font-size: 20px;
-    outline: none;
-}
-
 #submit-job{
     width: 100px;
     font-size: 19px;
@@ -611,11 +602,11 @@ body{
 
 #add-job{
     background: transparent;
-    border: black solid 1px;
     border-radius: 8px;
     padding: 6px;
     font-size: 19px;
     margin-left: 40px;
+    border: black solid 1px;
     cursor: pointer;
 }
 
@@ -627,12 +618,8 @@ body{
     border: black solid 1px;
     z-index: 7;
     border-radius: 6px;
-    padding: 8px;
-    width: 200px;
-}
-
-#add-form{
-    border: black solid 1px;
+    padding: 30px;
+    box-sizing: border-box;
 }
 
 #modal-backdrop{
@@ -668,4 +655,19 @@ body{
     cursor: pointer;
     border: black solid 1px;
     border-radius: 50%;
+}
+
+.new-job-inputs{
+    border-radius: 8px;
+    border: grey solid 1px;
+    padding: 8px;
+    color: black;
+    text-align: center;
+    outline: none;
+    margin: 8px 0;
+}
+
+.new-job-inputs:active {
+    outline: none;
+    box-shadow: none;
 }
