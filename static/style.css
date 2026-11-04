@@ -608,3 +608,64 @@ body{
     padding: 5px 8px 5px;
     width: fit-content;
 }
+
+#add-job{
+    background: transparent;
+    border: black solid 1px;
+    border-radius: 8px;
+    padding: 6px;
+    font-size: 19px;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+#add-job-div{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: white; 
+    border: black solid 1px;
+    z-index: 7;
+    border-radius: 6px;
+    padding: 8px;
+    width: 200px;
+}
+
+#add-form{
+    border: black solid 1px;
+}
+
+#modal-backdrop{
+    display: none;
+}
+
+#modal-backdrop.active{
+    z-index: 4;
+    display: grid;
+    inset: 0;
+    place-items: center;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(2.5px);
+}
+
+#add-job-cancel{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    justify-content: center;
+    background: none;
+    box-sizing: border-box;
+    height: 40px;
+    width: 40px;
+    border: red 0;
+    transition: 0.3s ease;
+}
+
+#add-job-cancel:hover{
+    margin-right: 10px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    border: black solid 1px;
+    border-radius: 50%;
+}

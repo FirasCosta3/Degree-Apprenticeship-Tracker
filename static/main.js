@@ -22,6 +22,10 @@ const no_button = document.querySelectorAll(".no")
 const bin_button = document.getElementById("removed-jobs")
 const main_jobs = document.getElementById("main-jobs")
 let total_applied = 0
+const add_job = document.getElementById("add-job")
+const modal_backdrop = document.getElementById("modal-backdrop")
+const add_job_div = document.getElementById("add-job-div")
+const add_job_cancel = document.getElementById("add-job-cancel")
 
 job_box.forEach((box, index) => {
     if (Number(job_box[index].dataset.applied) === 1) {
@@ -194,6 +198,21 @@ function pickJob(index){
     localStorage.setItem("jobs", JSON.stringify(jobs))
 }
 
+function addJob(){
+    modal_backdrop.classList.add("active")
+    add_job_cancel.addEventListener("click", closeJobMenu)
+    modal_backdrop.addEventListener("click", (event) => {
+        const isClickedInBox = add_job_div.contains(event.target)
+        if (!isClickedInBox){
+            closeJobMenu()
+        }
+    })
+}
+
+function closeJobMenu() {
+    modal_backdrop.classList.remove("active")
+}
+
 jobs_select.forEach((tick, index) => {
     tick.addEventListener("click", () => pickJob(index))
 })
@@ -202,3 +221,4 @@ filter_button.addEventListener("click", showFilters)
 clear_jobs.addEventListener("click", () => searchJobs("delete"));
 add_button.addEventListener("click", () => changeCount("+"));
 minus_button.addEventListener("click", () => changeCount("-"));
+add_job.addEventListener("click", addJob)
