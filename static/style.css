@@ -697,3 +697,22 @@ body{
 #new-job-titles{
     width: 100%;
 }
+
+#create-new-button{
+    margin-top: 10px;
+    background: #0977E3;
+    color: white;
+    border: black solid 1px;
+    border-radius: 7px;
+    padding: 6px;
+    cursor: pointer;
+    max-width: 65%;
+    font-size: 24px;
+}
+
+#add-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

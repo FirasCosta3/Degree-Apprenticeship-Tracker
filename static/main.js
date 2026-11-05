@@ -26,6 +26,7 @@ const add_job = document.getElementById("add-job")
 const modal_backdrop = document.getElementById("modal-backdrop")
 const add_job_div = document.getElementById("add-job-div")
 const add_job_cancel = document.getElementById("add-job-cancel")
+const create_new = document.getElementById("create-new-button")
 
 job_box.forEach((box, index) => {
     if (Number(job_box[index].dataset.applied) === 1) {
@@ -217,8 +218,13 @@ jobs_select.forEach((tick, index) => {
     tick.addEventListener("click", () => pickJob(index))
 })
 
+function createJob() {
+
+}
+
 filter_button.addEventListener("click", showFilters)
 clear_jobs.addEventListener("click", () => searchJobs("delete"));
 add_button.addEventListener("click", () => changeCount("+"));
 minus_button.addEventListener("click", () => changeCount("-"));
 add_job.addEventListener("click", addJob)
+create_new.addEventListener("click", createJob)
