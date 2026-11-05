@@ -618,7 +618,7 @@ body{
     border: black solid 1px;
     z-index: 7;
     border-radius: 6px;
-    padding: 30px;
+    padding: 10px 70px 55px;
     box-sizing: border-box;
 }
 
@@ -643,26 +643,31 @@ body{
     justify-content: center;
     background: none;
     box-sizing: border-box;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     border: red 0;
     transition: 0.3s ease;
+    border-radius: 9px;
 }
 
 #add-job-cancel:hover{
-    margin-right: 10px;
     transition: 0.3s ease;
     cursor: pointer;
     border: black solid 1px;
     border-radius: 50%;
 }
 
+#add-job-cancel:focus{
+    outline: grey solid 1px;
+}
+
 .new-job-inputs{
     border-radius: 8px;
     border: grey solid 1px;
-    padding: 8px;
+    padding: 9px;
     color: black;
     text-align: center;
+    font-size: 30px;
     outline: none;
     margin: 8px 0;
 }
@@ -670,4 +675,25 @@ body{
 .new-job-inputs:active {
     outline: none;
     box-shadow: none;
+}
+
+#add-job-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#add-title{
+    font-size: 50px;
+    margin: 12px;
+}
+
+#x-icon-can{
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+#new-job-titles{
+    width: 100%;
 }

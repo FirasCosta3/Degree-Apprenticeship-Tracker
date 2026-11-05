@@ -24,22 +24,28 @@
         <button id="add-job" class="main-font">Add a job</button>
         <div id="modal-backdrop">
             <div id="add-job-div">
-                <button type="button" id="add-job-cancel">
-                    <svg id="x-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
-                    <path d="M8.5 8.5 L15.5 15.5 M15.5 8.5 L8.5 15.5" stroke="#EF4444" stroke-width="2" stroke-linecap="round" fill="none"/>
-                    </svg>
-                </button>
+                <div id="add-job-title">
+                    <h1 id="add-title" class="main-font">Add a new job</h1>
+                    <button type="button" id="add-job-cancel">
+                        <svg id="x-icon-can" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+                        <path d="M8.5 8.5 L15.5 15.5 M15.5 8.5 L8.5 15.5" stroke="#EF4444" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </svg>
+                    </button>
+                </div>
                 <div id="add-form">
                     <form class="new-job-titles">
-                        <input class="main-font new-job-inputs" id="job-title" placeholder="Company name">
+                        <input id="job-title" class="main-font new-job-inputs" autocomplete="off" placeholder="Company name" type="text">
                     </form>
                     <form class="new-job-titles">
-                        <input class="main-font new-job-inputs" placeholder="Job title" autocomplete="off">
+                        <input id="company-name" class="main-font new-job-inputs" placeholder="Job title" autocomplete="off" type="text">
                     </form>
                     <form class="new-job-titles">
-                        <input class="main-font new-job-inputs" placeholder="Location">
+                        <input id="locations" class="main-font new-job-inputs" autocomplete="off" placeholder="Location" type="text">
                     </form>
-                </div>
+                    <form class="new-job-titles">
+                        <input id="url" class="main-font new-job-inputs" autocomplete="off" placeholder="Url" type="text">
+                    </form>
+                </div>  
             </div>
         </div>
         <p class="main-font" id="nav-title">DegreeApprenticeshipTracker</p>
