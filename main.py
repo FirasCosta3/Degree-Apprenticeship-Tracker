@@ -1,6 +1,6 @@
 import os
 from scraper import Friendly_Bot
-from database import insert_jobs, db_sync, jobs_database, get_jobs, get_removed_jobs, add_job
+from database import insert_jobs, db_sync, jobs_database, get_jobs, get_removed_jobs, add_job, delete_job
 from flask import Flask, render_template, request, jsonify
 from email_sender import send_emails
 import json
@@ -87,6 +87,12 @@ def create_jobs():
     data = request.get_json()
     add_job(data.get("jobDetails"), connection)
     return jsonify({"status": 200})
+
+@app.route("/deleteJob", methods = ["POST"])
+def deleted_job():
+    data = request.get_json()
+    status = delete_job(data.get("jobId"), connection)
+    return jsonify({"status": 200}) if status == 200 else ({"status": 404})
 
 if __name__ == "__main__":
     app.run(debug=True)

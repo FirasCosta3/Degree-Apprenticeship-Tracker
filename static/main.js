@@ -43,7 +43,7 @@ job_box.forEach((box, index) => {
         apply_button[index].classList.add("active")
     }
 })
-    let amount = Number(localStorage.getItem("counter")) || 0
+let amount = Number(localStorage.getItem("counter")) || 0
 
 let jobs = JSON.parse(localStorage.getItem("jobs")) || []
 if (jobs.length > 0) {

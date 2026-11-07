@@ -14,7 +14,8 @@ def jobs_database(connection):   # creates database if it's not already made
                 companyName TEXT,
                 applied INTEGER DEFAULT 0,
                 hidden INTEGER DEFAULT 0,
-                location TEXT
+                location TEXT,
+                remove INTEGER DEFAULT 0
                 )""")
     connection.commit()
 
@@ -41,7 +42,13 @@ def get_jobs(connection):
 
 def get_removed_jobs(connection):
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM jobs WHERE hidden = 1 ORDER BY applied ASC ")
+    cursor.execute("SELECT * FROM jobs WHERE hidden = 1 and remove = 0 ORDER BY applied ASC ")
     removed_jobs = cursor.fetchall()
     connection.commit()
     return removed_jobs
+
+def delete_job(jobId, connection):
+    cursor = connection.cursor()
+    cursor.execute("UPDATE jobs SET remove = 1 WHERE jobId = ?", (jobId,))
+    connection.commit()
+    return 200

@@ -83,6 +83,11 @@ body{
     pointer-events: none;
 }
 
+.jobs-display.deleted{
+    display: none;
+    position: absolute;
+}
+
 .jobs-display:hover {
     transform: perspective(1px) scale(1.03)
 }
@@ -527,6 +532,7 @@ body{
     width: fit-content;
     cursor: pointer;
     height: 34px;
+    padding: 0 15px;
     display: flex;
     align-items: center;
     transition: 0.8s ease, opacity 0.8s ease;
@@ -733,12 +739,12 @@ body{
     gap: 10px;
 }
 
-#delete-perm-button{
+.delete-perm-button{
     background: #E30000;
     color: #EDEDED;
     border: none;
     border-radius: 9px;
+    padding: 0 17px;
     height: 35px;
-
     cursor: pointer;
 }
