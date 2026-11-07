@@ -13,7 +13,8 @@ Building this project has allowed me to apply early to the degree apprenticeship
 * **Job Management:** You are able to remove jobs you dont want moving it to the `bin` page where you can restore back to home.
 * **Application Tracking:** Each job listing has a dedicated checkmark button you can press when you have applied to the job, sending it to the bottom of the page and adding +1 to the applied to tally at the top.
 * **Data Handling:** SQLite to store active jobs and track users removed jobs, used a JSON file that the Github agent appends after each new job so no duplicate emails are sent.
-<img width="1719" height="992" alt="Screenshot 2026-10-31 080801" src="https://github.com/user-attachments/assets/2a6bad93-b54c-437e-bf64-074a7243e66d" />
+<img width="1719" height="989" alt="image" src="https://github.com/user-attachments/assets/ee223cb3-e278-4f6f-a8a7-0bfe98517d59" />
+
 
 ## Tech Stack
 * **Backend:** Python, Flask
