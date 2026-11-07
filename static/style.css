@@ -8,6 +8,7 @@
 #jobs-filters,
 .restore-button,
 #title-nav,
+.confirm-edit,
 .edit-button,
 #no-jobs{
     will-change: transform;
@@ -223,7 +224,7 @@ body{
     font-size: 20px;
     font-weight: 700;
     background: transparent;
-    border: black solid 1px;
+    border: rgb(111, 110, 110) solid 1px;
     border-radius: 6px;
     padding: 12px;
     position: absolute;
@@ -609,32 +610,42 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 250px;
+}
+
+.location-p{
+    padding: 6px;
     margin: 0;
-    padding: 0;
+    border: transparent solid 1px;
+    border-radius: 6px;
+    visibility: visible;
 }
 
 .location-p.active{
-    display: none;
-    margin: 0;
+    visibility: hidden;
 }
 
 #location-div{
     position: relative;
     margin-right: 55px;
+    display: flex;
+    align-items: center;
 }
 
 .location-input{
-    display: none;
     background: transparent;
     max-width: 12ch;
-    border: none;
-    border-bottom: grey solid 1px;
+    border: grey solid 1px;
+    border-radius: 6px;
     margin: 0;
-    padding: 0;
+    font-size: 19px;
+    padding: 6px;
+    visibility: hidden;
+    position: absolute;
 }
 
 .location-input.active{
-    display: inline;
+    visibility: visible;
+    border: rgb(111, 110, 110) solid 1px;
 }
 
 #jobs-details-div{
@@ -847,8 +858,8 @@ input.active{
     display: flex;
     align-self: center;
     justify-content: space-between;
-    background: transparent;
     border: none;
+    background: transparent;
     border-radius: 9px;
     flex-shrink: 0;
     padding: 1;
@@ -859,4 +870,24 @@ input.active{
 
 .edit-button:hover {
     transform: scale(1.24)
+}
+
+.confirm-edit{
+    visibility: hidden;
+    position: relative;
+}
+
+.confirm-edit.active{
+    visibility: visible;
+    position: absolute;
+}
+
+.edit-svg{
+    visibility: visible;
+    position: absolute;
+}
+
+.edit-svg.active{
+    visibility: hidden;
+    position: relative;
 }

@@ -99,15 +99,18 @@
         <div class="jobs-display" data-id="{{ jobs[0] }}"  data-applied="{{ jobs[4] }}" data-jobs = '{{ [jobs[3], jobs[0], jobs[1], jobs[6], jobs[2]] | tojson }}'>
         <div id="jobs-details-div">
             <p class="main-font company company-p"> {{ jobs[3] }} </p>
-            <input class="company main-font company-input" value="{{ jobs[3] }}">
+            <input data-type = "companyName" class="company main-font company-input" value="{{ jobs[3] }}">
             <div id="head-div">
                 <div id="location-div">
                     <p class="main-font location location-p"> {{ jobs[6] }} </p>
-                    <input class = "main-font location location-input" value = "{{ jobs[6] }}">
+                    <input data-type = "location" class = "main-font location location-input" value = "{{ jobs[6] }}">
                 </div>
                 <button class="edit-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="31" width="31" viewBox="0 -960 960 960" fill="currentColor">
+                    <svg class="edit-svg" xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 -960 960 960" fill="currentColor">
                         <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
+                    </svg>
+                    <svg class="confirm-edit" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                 </button>
             </div>
@@ -134,7 +137,7 @@
                 </div>
             </div>
             <h2 class="main-font job-name job-name-p">{{ jobs[1] }}</h2>
-            <input type = "text" class="job-name job-name-input main-font" value="{{ jobs[1] }}">
+            <input data-type = "jobTitle" type = "text" class="job-name job-name-input main-font" value="{{ jobs[1] }}">
             <button type="button" class="tick-box">
                 <svg class="tick" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>

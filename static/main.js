@@ -267,25 +267,47 @@ edit_button.forEach((button, index) => {
     button.addEventListener("click", () => editJob(index))
 })
 
+const location_input = document.querySelectorAll(".location-input")
+const location_p = document.querySelectorAll(".location-p")
+const company_p = document.querySelectorAll(".company-p")
+const title_input = document.querySelectorAll(".job-name-input")
+const job_input = document.querySelectorAll(".job-name-input")
+const job_p = document.querySelectorAll(".job-name-p")
+
 const editJob = (index) => {
-    toggleEdits(index)
-    const [company, job_id, title, location, url] = job_box[index].dataset.jobs
+    document.querySelectorAll(".edit-svg")[index].classList.toggle("active");
+    document.querySelectorAll(".confirm-edit")[index].classList.toggle("active");
+    toggleEdits(index);
+    const [company, job_id, title, location, url] = job_box[index].dataset.jobs;
+    const input_list = [location_input[index], title_input[index], job_input[index]]
+    input_list.forEach((input, ind) => {
+    input.addEventListener("keydown", (e) => {
+        if(e.key === "Enter"){
+            const jobId = job_box[index].dataset.id
+            const type = input.dataset.type
+            updateJob(type);
+            console.log(jobId, type)
+        }
+    })
+})
+}
+
+async function updateJob () {
+    const response = await fetch("/") 
 }
 
 const resetInputs = (index) => {
     company_input[index].value = company_input[index].defaultValue
-    const location_input = document.querySelectorAll(".location-input")[index];
-    location_input.value = location_input.defaultValue
-    const title = document.querySelectorAll(".job-name-input")[index]
-    title.value = title.defaultValue
+    location_input[index].value = location_input[index].defaultValue
+    title_input[index].value = title_input[index].defaultValue
 }
 
 const toggleEdits = (index) => {
     resetInputs(index);
-    document.querySelectorAll(".location-input")[index].classList.toggle("active");
-    document.querySelectorAll(".location-p")[index].classList.toggle("active")
-    document.querySelectorAll(".company-p")[index].classList.toggle("active");
+    location_input[index].classList.toggle("active");
+    location_p[index].classList.toggle("active")
+    company_p[index].classList.toggle("active");
     company_input[index].classList.toggle("active");
-    document.querySelectorAll(".job-name-input")[index].classList.toggle("active");
-    document.querySelectorAll(".job-name-p")[index].classList.toggle("active");
+    job_input[index].classList.toggle("active");
+    job_p[index].classList.toggle("active");
 }
