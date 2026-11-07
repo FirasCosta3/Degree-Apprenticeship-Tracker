@@ -520,13 +520,13 @@ body{
 }
 
 .restore-button{
-    background: #0000FF;
+    background: #0051DE;
     color: lightgrey;
     border: solid lightgrey 1px;
     border-radius: 7px;
     width: fit-content;
     cursor: pointer;
-    height:30px;
+    height: 34px;
     display: flex;
     align-items: center;
     transition: 0.8s ease, opacity 0.8s ease;
@@ -534,11 +534,6 @@ body{
 
 .restore-button.active{
     pointer-events: none;
-}
-
-.restore-button:hover {
-    transform: scale(1.06);
-    border: black solid 1px;
 }
 
 .removed-overlay{
@@ -695,19 +690,21 @@ body{
 }
 
 #new-job-titles{
-    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 #create-new-button{
     margin-top: 10px;
     background: #0977E3;
     color: white;
-    border: black solid 1px;
+    border: none;
     border-radius: 7px;
-    padding: 6px;
+    padding: 6px 15px;
     cursor: pointer;
     max-width: 65%;
-    font-size: 24px;
+    margin: auto;
+    font-size: 32px;
 }
 
 #add-form{
@@ -715,4 +712,33 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+#error-message{
+    margin: auto;
+    visibility: hidden;
+    padding: 0;
+    margin-bottom: 8px;
+}
+
+#error-message.active{
+    color: red;
+    visibility: visible;
+}
+
+#restore-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#delete-perm-button{
+    background: #E30000;
+    color: #EDEDED;
+    border: none;
+    border-radius: 9px;
+    height: 35px;
+
+    cursor: pointer;
 }

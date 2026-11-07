@@ -33,19 +33,14 @@
                     </button>
                 </div>
                 <div id="add-form">
-                    <form class="new-job-titles">
-                        <input id="job-title" class="main-font new-job-inputs" autocomplete="off" placeholder="Company name" type="text">
+                    <form id="new-job-titles" novalidate>
+                        <input id="job-title" class="main-font new-job-inputs" autocomplete="off" placeholder="Company name" type="text" required>
+                        <input id="company-name" class="main-font new-job-inputs" placeholder="Job title" autocomplete="off" type="text" required>
+                        <input id="locations" class="main-font new-job-inputs" autocomplete="off" placeholder="Location" type="text" required>
+                        <input id="url" class="main-font new-job-inputs" autocomplete="off" placeholder="Url" type="text" required>
+                        <p class="main-font" id="error-message">Dont leave any fields blank</p>
+                        <button id="create-new-button" class="main-font" type="submit">Create new job</button>
                     </form>
-                    <form class="new-job-titles">
-                        <input id="company-name" class="main-font new-job-inputs" placeholder="Job title" autocomplete="off" type="text">
-                    </form>
-                    <form class="new-job-titles">
-                        <input id="locations" class="main-font new-job-inputs" autocomplete="off" placeholder="Location" type="text">
-                    </form>
-                    <form class="new-job-titles">
-                        <input id="url" class="main-font new-job-inputs" autocomplete="off" placeholder="Url" type="text">
-                    </form>
-                    <button id="create-new-button" class="main-font" type="button">Create new job</button>
                 </div>  
             </div>
         </div>

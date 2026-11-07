@@ -24,7 +24,14 @@ def insert_jobs(jobs_dict, connection):
     for jobs_id, details in jobs_dict.items(): # inserts the job details into the database
         cursor.execute("INSERT OR IGNORE INTO jobs (jobId, jobTitle, url, companyName, location) VALUES(?,?,?,?,?)",(jobs_id,details["jobTitle"], details["url"], details["companyName"], details["location"]))
     connection.commit()
+
+def add_job(job_details, connection):
+    title, company, location, url = job_details
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO jobs (jobTitle, url, companyName, location) VALUES(?,?,?,?)", (title, url, company, location))
+    connection.commit()
     
+
 def get_jobs(connection):
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM jobs WHERE hidden = 0 ORDER BY applied ASC")

@@ -26,7 +26,13 @@ const add_job = document.getElementById("add-job")
 const modal_backdrop = document.getElementById("modal-backdrop")
 const add_job_div = document.getElementById("add-job-div")
 const add_job_cancel = document.getElementById("add-job-cancel")
-const create_new = document.getElementById("create-new-button")
+const error_message = document.getElementById("error-message")
+const job_deets = document.getElementById("new-job-titles")
+const company = document.getElementById("company-name");
+const title = document.getElementById("job-title");
+const job_location = document.getElementById("locations");
+const url = document.getElementById("url");
+const create_jobs = document.getElementById("create-new-button")
 
 job_box.forEach((box, index) => {
     if (Number(job_box[index].dataset.applied) === 1) {
@@ -218,8 +224,28 @@ jobs_select.forEach((tick, index) => {
     tick.addEventListener("click", () => pickJob(index))
 })
 
-function createJob() {
-
+async function createJob() {
+    const jobDetails = [company.value, title.value, job_location.value, url.value]
+    if (!company.value || !title.value || !url.value || !job_location.value){
+        error_message.classList.add("active")
+    }
+    else{
+        error_message.classList.remove("active")
+    const response = await fetch("/createJobs", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify ({
+            jobDetails: jobDetails,
+        })
+    })
+    const data = await response.json();
+    if (data.status === 200){
+        location.reload()
+    }
+    
+}
 }
 
 filter_button.addEventListener("click", showFilters)
@@ -227,4 +253,10 @@ clear_jobs.addEventListener("click", () => searchJobs("delete"));
 add_button.addEventListener("click", () => changeCount("+"));
 minus_button.addEventListener("click", () => changeCount("-"));
 add_job.addEventListener("click", addJob)
-create_new.addEventListener("click", createJob)
+job_deets.addEventListener("keydown",(e) => {
+    if (e.key === "Enter"){
+        e.preventDefault()
+        createJob(e)
+    }}
+)
+create_jobs.addEventListener("click", (e) => {e.preventDefault(); createJob()})

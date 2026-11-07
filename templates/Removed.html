@@ -15,8 +15,11 @@
     {% for jobs in removed %}
     <div class="jobs-display" data-id="{{ jobs[0] }}"  data-applied="{{ jobs[4] }}">
         <div id="top-box">
-            <h1 class="main-font" id="company"> {{ jobs[3] }} </h1>
-            <button type="button" class="main-font restore-button">Restore this job</button>
+            <div id="restore-div">
+                <h1 class="main-font" id="company"> {{ jobs[3] }} </h1>
+                <button type="button" class="main-font restore-button">Restore this job</button>
+            </div>
+            <button id="delete-perm-button" type="button" class="main-font">Delete Permanently</button>
             <div class="removed-overlay">
             </div>
         </div>
