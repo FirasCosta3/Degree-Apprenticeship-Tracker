@@ -8,11 +8,11 @@
 #jobs-filters,
 .restore-button,
 #title-nav,
+.edit-button,
 #no-jobs{
     will-change: transform;
     backface-visibility: hidden;
 }
-
 
 body{
     margin: 0;
@@ -89,7 +89,7 @@ body{
 }
 
 .jobs-display:hover {
-    transform: perspective(1px) scale(1.03)
+    transform: perspective(1px);
 }
 
 .tick-box{
@@ -196,10 +196,37 @@ body{
 
 }
 
-#job-name{
+.job-name{
     max-width: 56%;
     font-size: 20px;
     font-weight: 700;
+}
+
+.job-name-p{
+    position: relative;
+}
+
+.job-name-p.active{
+    visibility: hidden;
+}
+
+.job-name-input{
+    visibility: hidden;
+    position: absolute;
+}
+
+.job-name-input.active{
+    visibility: visible;
+    margin: auto;
+    margin-left: 50px;;
+    max-width: 16ch;
+    font-size: 20px;
+    font-weight: 700;
+    background: transparent;
+    border: black solid 1px;
+    border-radius: 6px;
+    padding: 12px;
+    position: absolute;
 }
 
 #nav-title{
@@ -576,12 +603,38 @@ body{
     transform: translate(-50%, -50%) scale(1.06);
 }
 
-#location{
+.location{
+    display: inline;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 250px;
-    margin-right: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.location-p.active{
+    display: none;
+    margin: 0;
+}
+
+#location-div{
+    position: relative;
+    margin-right: 55px;
+}
+
+.location-input{
+    display: none;
+    background: transparent;
+    max-width: 12ch;
+    border: none;
+    border-bottom: grey solid 1px;
+    margin: 0;
+    padding: 0;
+}
+
+.location-input.active{
+    display: inline;
 }
 
 #jobs-details-div{
@@ -590,15 +643,40 @@ body{
     align-items: center;
 }
 
-#company{
+.company{
     background: #e8e7e6;
-    border: solid lightgrey 1px;
+    border: solid lightgrey 1px; 
     border-radius: 7px;
     height: 20px;
     display: flex;
     align-items: center;
     padding: 5px 8px 5px;
     width: fit-content;
+}
+
+.company-p.active{
+    visibility: hidden;
+}
+
+input {
+    field-sizing: content;
+    outline: none;
+}
+
+input:focus{
+    z-index: 1000;
+}
+
+.company-input{
+    position: absolute;
+    max-width: 20ch;
+    visibility: hidden;
+    width: fit-content;
+    border: rgb(111, 110, 110) solid 1px;
+}
+
+input.active{
+    visibility: visible;
 }
 
 #add-job{
@@ -747,4 +825,38 @@ body{
     padding: 0 17px;
     height: 35px;
     cursor: pointer;
+}
+
+#head-div{
+    display: flex;
+}
+
+#edit-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pencil-icon{
+    font-size: 30px;
+    line-height: 1;
+}
+
+.edit-button{
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    border-radius: 9px;
+    flex-shrink: 0;
+    padding: 1;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin: 0;
+}
+
+.edit-button:hover {
+    transform: scale(1.24)
 }

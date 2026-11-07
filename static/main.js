@@ -33,6 +33,8 @@ const title = document.getElementById("job-title");
 const job_location = document.getElementById("locations");
 const url = document.getElementById("url");
 const create_jobs = document.getElementById("create-new-button")
+const edit_button = document.querySelectorAll(".edit-button")
+const company_input = document.querySelectorAll(".company-input")
 
 job_box.forEach((box, index) => {
     if (Number(job_box[index].dataset.applied) === 1) {
@@ -260,3 +262,30 @@ job_deets.addEventListener("keydown",(e) => {
     }}
 )
 create_jobs.addEventListener("click", (e) => {e.preventDefault(); createJob()})
+
+edit_button.forEach((button, index) => {
+    button.addEventListener("click", () => editJob(index))
+})
+
+const editJob = (index) => {
+    toggleEdits(index)
+    const [company, job_id, title, location, url] = job_box[index].dataset.jobs
+}
+
+const resetInputs = (index) => {
+    company_input[index].value = company_input[index].defaultValue
+    const location_input = document.querySelectorAll(".location-input")[index];
+    location_input.value = location_input.defaultValue
+    const title = document.querySelectorAll(".job-name-input")[index]
+    title.value = title.defaultValue
+}
+
+const toggleEdits = (index) => {
+    resetInputs(index);
+    document.querySelectorAll(".location-input")[index].classList.toggle("active");
+    document.querySelectorAll(".location-p")[index].classList.toggle("active")
+    document.querySelectorAll(".company-p")[index].classList.toggle("active");
+    company_input[index].classList.toggle("active");
+    document.querySelectorAll(".job-name-input")[index].classList.toggle("active");
+    document.querySelectorAll(".job-name-p")[index].classList.toggle("active");
+}
