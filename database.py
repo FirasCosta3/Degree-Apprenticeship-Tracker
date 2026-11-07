@@ -28,6 +28,9 @@ def insert_jobs(jobs_dict, connection):
 
 def add_job(job_details, connection):
     title, company, location, url = job_details
+    title = title.title()
+    company = company.title()
+    location = location.title()
     cursor = connection.cursor()
     cursor.execute("INSERT INTO jobs (jobTitle, url, companyName, location) VALUES(?,?,?,?)", (title, url, company, location))
     connection.commit()
