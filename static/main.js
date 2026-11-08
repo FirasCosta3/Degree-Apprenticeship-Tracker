@@ -34,8 +34,6 @@ const job_location = document.getElementById("locations");
 const url = document.getElementById("url");
 const create_jobs = document.getElementById("create-new-button")
 const edit_button = document.querySelectorAll(".edit-button")
-const company_input = document.querySelectorAll(".company-input")
-
 job_box.forEach((box, index) => {
     if (Number(job_box[index].dataset.applied) === 1) {
         tick_display[index].classList.add("active")
@@ -270,42 +268,68 @@ edit_button.forEach((button, index) => {
 const location_input = document.querySelectorAll(".location-input")
 const location_p = document.querySelectorAll(".location-p")
 const company_p = document.querySelectorAll(".company-p")
-const title_input = document.querySelectorAll(".job-name-input")
 const job_input = document.querySelectorAll(".job-name-input")
 const job_p = document.querySelectorAll(".job-name-p")
+const company_input = document.querySelectorAll(".company-input")
+const url_input = document.querySelectorAll(".apply-input")
+
 
 const editJob = (index) => {
-    document.querySelectorAll(".edit-svg")[index].classList.toggle("active");
-    document.querySelectorAll(".confirm-edit")[index].classList.toggle("active");
     toggleEdits(index);
     const [company, job_id, title, location, url] = job_box[index].dataset.jobs;
-    const input_list = [location_input[index], title_input[index], job_input[index]]
+    const input_list = [location_input[index], job_input[index], company_input[index], url_input[index]]
     input_list.forEach((input, ind) => {
-    input.addEventListener("keydown", (e) => {
+    if (input.dataset.editListener !== "true"){
+        input.dataset.editListener = "true";
+        input.addEventListener("keydown", (e) => {
         if(e.key === "Enter"){
             const jobId = job_box[index].dataset.id
             const type = input.dataset.type
-            updateJob(type);
-            console.log(jobId, type)
+            const value = input.value
+            updateJob(e, jobId, type, value, index);
         }
     })
+    }
 })
 }
 
-async function updateJob () {
-    const response = await fetch("/") 
+async function updateJob (e, jobId, type, value, index) {
+    e.preventDefault()
+    console.trace("Fetch")
+    const response = await fetch("/updateJob", {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json",
+        },
+        body: JSON.stringify({
+            jobId: jobId,
+            type: type,
+            value: value,
+        })
+    })
+    const data = await response.json()
+    if (data.status === 200){
+        toggleEdits(index)
+        if (document.querySelectorAll(".apply-input")[index].classList.toggle("active").value !== ""){
+            location.reload()
+        }
+    } 
 }
 
-const resetInputs = (index) => {
-    company_input[index].value = company_input[index].defaultValue
-    location_input[index].value = location_input[index].defaultValue
-    title_input[index].value = title_input[index].defaultValue
+const changeInputs = (index) => {
+    company_p[index].textContent = company_input[index].value
+    location_p[index].textContent = location_input[index].value
+    job_p[index].textContent = job_input[index].value
 }
 
 const toggleEdits = (index) => {
-    resetInputs(index);
+    changeInputs(index);
+    document.querySelectorAll(".apply-button")[index].classList.toggle("hidden");
+    document.querySelectorAll(".apply-input")[index].classList.toggle("active");
+    document.querySelectorAll(".edit-svg")[index].classList.toggle("active");
+    document.querySelectorAll(".confirm-edit")[index].classList.toggle("active");
     location_input[index].classList.toggle("active");
-    location_p[index].classList.toggle("active")
+    location_p[index].classList.toggle("active");
     company_p[index].classList.toggle("active");
     company_input[index].classList.toggle("active");
     job_input[index].classList.toggle("active");

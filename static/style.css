@@ -179,8 +179,13 @@ body{
 }
 
 .apply-button{
+    position: relative;
+    visibility: visible;
+}
+
+.apply-design{
     top: 50%;
-    width: 90px;
+    width: 8ch;
     text-align: center;
     margin-left: 20px;
     text-decoration: none;
@@ -190,6 +195,21 @@ body{
     border-radius: 8px;
     padding: 10px 5px;
     height: fit-content;
+}
+
+.apply-input{
+    visibility: hidden;
+    position: absolute;
+}
+
+.apply-input.active{
+    visibility: visible;
+    position: relative;
+}
+
+.apply-button.hidden{
+    position: absolute;
+    visibility: hidden;
 }
 
 .apply-button.active {
@@ -757,6 +777,7 @@ input.active{
     padding: 9px;
     color: black;
     text-align: center;
+    max-width: 18ch;
     font-size: 30px;
     outline: none;
     margin: 8px 0;
@@ -787,6 +808,7 @@ input.active{
 #new-job-titles{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 #create-new-button{
@@ -797,7 +819,7 @@ input.active{
     border-radius: 7px;
     padding: 6px 15px;
     cursor: pointer;
-    max-width: 65%;
+    max-width: 70%;
     margin: auto;
     font-size: 32px;
 }

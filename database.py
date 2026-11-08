@@ -55,3 +55,9 @@ def delete_job(jobId, connection):
     cursor.execute("UPDATE jobs SET remove = 1 WHERE jobId = ?", (jobId,))
     connection.commit()
     return 200
+
+def update_job(jobId, type, value, connection):
+    cursor = connection.cursor()
+    query = f"UPDATE jobs SET {type} = ? WHERE jobId = ?"
+    cursor.execute(query, (value, jobId))
+    connection.commit()
