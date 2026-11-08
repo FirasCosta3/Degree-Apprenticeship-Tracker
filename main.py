@@ -103,5 +103,17 @@ def update_jobs():
     update_job(jobId, type, value, connection)
     return jsonify({"status": 200})
 
+@app.route("/updateFields", methods = ["POST"])
+def updateFields():
+    data = request.get_json()
+    jobId = data["jobId"]
+    connection = db_sync()
+    for detail, update in data["updates"].items():
+        cursor = connection.cursor()
+        query = f"UPDATE jobs SET {detail} = ? WHERE jobId = ?"
+        cursor.execute(query, (update, jobId))
+        connection.commit()
+    return jsonify({"status": 200})
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -99,11 +99,11 @@
         <div class="jobs-display" data-id="{{ jobs[0] }}"  data-applied="{{ jobs[4] }}" data-jobs = '{{ [jobs[3], jobs[0], jobs[1], jobs[6], jobs[2]] | tojson }}'>
         <div id="jobs-details-div">
             <p class="main-font company company-p"> {{ jobs[3] }} </p>
-            <input data-type = "companyName" class="company main-font company-input" value="{{ jobs[3] }}">
+            <input name = "companyName" class="company main-font company-input" value="{{ jobs[3] }}">
             <div id="head-div">
                 <div id="location-div">
                     <p class="main-font location location-p"> {{ jobs[6] }} </p>
-                    <input data-type = "location" class = "main-font location location-input" value = "{{ jobs[6] }}">
+                    <input name = "location" class = "main-font location location-input" value = "{{ jobs[6] }}">
                 </div>
                 <button class="edit-button">
                     <svg class="edit-svg" xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 -960 960 960" fill="currentColor">
@@ -137,14 +137,14 @@
                 </div>
             </div>
             <h2 class="main-font job-name job-name-p">{{ jobs[1] }}</h2>
-            <input data-type = "jobTitle" type = "text" class="job-name job-name-input main-font" value="{{ jobs[1] }}">
+            <input name ="jobTitle" type = "text" class="job-name job-name-input main-font" value="{{ jobs[1] }}">
             <button type="button" class="tick-box">
                 <svg class="tick" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
             </button>
             <a class="main-font apply-button apply-design" href="{{ jobs[2] }}" target="_blank">Apply here</a>
-            <input data-type = "url" class="main-font apply-design apply-input" placeholder="Paste URL"> 
+            <input name = "url" class="main-font apply-design apply-input" placeholder="Paste URL"> 
         </div>
     </div>
     {% endfor %}

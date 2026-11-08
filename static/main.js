@@ -273,32 +273,63 @@ const job_p = document.querySelectorAll(".job-name-p")
 const company_input = document.querySelectorAll(".company-input")
 const url_input = document.querySelectorAll(".apply-input")
 
-
+let edit_on = true
 const editJob = (index) => {
     toggleEdits(index);
-    const [company, job_id, title, location, url] = job_box[index].dataset.jobs;
+    edit_on = !edit_on
+    const editedDetails = {}
     const input_list = [location_input[index], job_input[index], company_input[index], url_input[index]]
-    input_list.forEach((input, ind) => {
-    if (input.dataset.editListener !== "true"){
-        input.dataset.editListener = "true";
-        input.addEventListener("keydown", (e) => {
-        if(e.key === "Enter"){
-            const jobId = job_box[index].dataset.id
-            const type = input.dataset.type
-            const value = input.value
-            if (type === "url" && value === ""){
-                const value = document.querySelectorAll(".apply-button")[index].href
+    if (edit_on){
+        input_list.forEach((input) => {
+            if (input.value !== input.defaultValue){
+                if (input.name !== "url"){
+                    editedDetails[input.name] = input.value
+                }
+                else{
+                    editedDetails[input.name] = input.href
+                }
+                updateFields(editedDetails, job_box[index].dataset.id)
             }
-            updateJob(e, jobId, type, value, index);
+        })
+    }
+
+    else{
+        input_list.forEach((input) => {
+        if (input.dataset.editListener !== "true"){
+            input.dataset.editListener = "true";
+            input.addEventListener("keydown", (e) => {
+            if(e.key === "Enter"){
+                const jobId = job_box[index].dataset.id
+                const type = input.name
+                edit_on = !edit_on
+                const value = input.value
+                if (type === "url" && value === ""){
+                    const value = document.querySelectorAll(".apply-button")[index].href
+                }
+                updateJob(e, jobId, type, value, index);
+            }
+        })
         }
     })
-    }
-})
+}
+}
+
+async function updateFields (editedDetails, jobId) {
+    const response = await fetch("/updateFields", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            updates: editedDetails,
+            jobId: jobId
+        })
+    })
+    const data = await response.json();
 }
 
 async function updateJob (e, jobId, type, value, index) {
     e.preventDefault()
-    console.trace("Fetch")
     const response = await fetch("/updateJob", {
         method: "POST",
         headers: {
