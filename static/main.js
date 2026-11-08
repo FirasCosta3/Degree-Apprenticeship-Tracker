@@ -286,7 +286,8 @@ const editJob = (index) => {
                     editedDetails[input.name] = input.value
                 }
                 else{
-                    editedDetails[input.name] = input.href
+                    editedDetails[input.name] = input.value
+                    document.querySelectorAll(".apply-button")[index].href = input.value
                 }
                 updateFields(editedDetails, job_box[index].dataset.id)
             }
@@ -303,6 +304,7 @@ const editJob = (index) => {
                 const type = input.name
                 edit_on = !edit_on
                 const value = input.value
+                input.defaultValue = value
                 if (type === "url" && value === ""){
                     const value = document.querySelectorAll(".apply-button")[index].href
                 }
@@ -315,6 +317,7 @@ const editJob = (index) => {
 }
 
 async function updateFields (editedDetails, jobId) {
+    console.log("aksjhdbdahjasdihn")
     const response = await fetch("/updateFields", {
         method: "POST",
         headers: {
