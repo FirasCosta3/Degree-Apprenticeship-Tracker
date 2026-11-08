@@ -1,4 +1,5 @@
-<img width="1719" height="990" alt="Screenshot 2026-10-31 080704" src="https://github.com/user-attachments/assets/b8441b0a-1b0a-4ee3-9c7c-8f791c4ce789" />
+<img width="1719" height="990" alt="image" src="https://github.com/user-attachments/assets/e63cbcde-0519-40e4-8054-9339e1ae2e70" />
+
 
 ﻿<h1> Degree Apprenticeship Tracker </h1>
 
