@@ -286,6 +286,9 @@ const editJob = (index) => {
             const jobId = job_box[index].dataset.id
             const type = input.dataset.type
             const value = input.value
+            if (type === "url" && value === ""){
+                const value = document.querySelectorAll(".apply-button")[index].href
+            }
             updateJob(e, jobId, type, value, index);
         }
     })
@@ -310,8 +313,8 @@ async function updateJob (e, jobId, type, value, index) {
     const data = await response.json()
     if (data.status === 200){
         toggleEdits(index)
-        if (document.querySelectorAll(".apply-input")[index].classList.toggle("active").value !== ""){
-            location.reload()
+        if (document.querySelectorAll(".apply-input")[index].value !== ""){
+            document.querySelectorAll(".apply-button")[index].href = value
         }
     } 
 }
